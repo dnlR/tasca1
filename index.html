@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Holydays</title>
+</head>
+<body>
+  <h1>Holydays</h1>
+  <form id="holyday_new">
+    <div>
+      <label>Name: </label>
+      <input type="text" id="name">
+    </div>   
+    <div>
+      <label>Price: </label>
+      <input type="number" id="price">
+    </div>
+    <div>
+      <label>Country: </label>
+      <input type="text" id="country">
+    </div>
+    <div>
+      <label>Description: </label>
+      <textarea type="text" id="description"></textarea>
+    </div>
+    <button type="submit">Add Holyday</button>
+  </form>
+  
+  <div id="holydays_list">
+    <h2>Holydays List</h2>
+    <ul>
+
+    </ul>
+  </div>
+  
+  <div id="holyday_detail_container">
+    <h2>Holyday Detail</h2>
+    <div id="holyday_detail"></div>
+  </div>
+
+  <script type="module" src="./www/app.js"></script>
+</body>
+</html>
