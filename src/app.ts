@@ -21,26 +21,34 @@ form.addEventListener('submit', (e: Event) => {
     holydays = [newHolyday];
   }
 
-  const holydayULList = document.querySelector("#holydays_list>ul") as HTMLUListElement;
+  const holydayULList = document.querySelector("#holydays_list") as HTMLUListElement;
   const holydayLI = document.createElement('li');
-  const holydayLIHeader = document.createElement('h4');
-  holydayLIHeader.innerText = newHolyday.name;
-  holydayLIHeader.addEventListener('click', (e: Event) => {
-    const holydayDetail = document.querySelector('#holyday_detail') as HTMLDivElement;
+  holydayLI.className = 'pure-menu-item';
+  const holydayLILink = document.createElement('a');
+  holydayLILink.href = '#';
+  holydayLILink.className = "pure-menu-link";
+  holydayLILink.innerText = newHolyday.name;
+
+  holydayLILink.addEventListener('click', (e: Event) => {
+    const holydayDetail = document.querySelector('#holyday_detail') as HTMLUListElement;
+
     // empty previous holyday detail before updating with the new one clicked
     holydayDetail.innerHTML = '';
 
-    const holydayName = document.createElement('p');
+    const holydayName = document.createElement('li');
     holydayName.innerText = `Name: ${newHolyday.name}`;
-    const holydayPrice = document.createElement('p');
+    const holydayPrice = document.createElement('li');
     holydayPrice.innerText = `Price: ${newHolyday.price.toString()}`;
-    const holydayCountry = document.createElement('p');
+    const holydayCountry = document.createElement('li');
     holydayCountry.innerText = `Country: ${newHolyday.country}`;
-    const holydayDescription = document.createElement('p');
+    const holydayDescription = document.createElement('li');
     holydayDescription.innerText = `Description: ${newHolyday.description}`;
 
     holydayDetail.append(holydayName, holydayPrice, holydayCountry, holydayDescription);
   });
-  holydayLI.append(holydayLIHeader);
+
+  holydayLI.append(holydayLILink);
   holydayULList.append(holydayLI);
+
+  form.reset();
 });
