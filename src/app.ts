@@ -25,7 +25,6 @@ form.addEventListener('submit', (e: Event) => {
   const holydayLI = document.createElement('li');
   holydayLI.className = 'pure-menu-item';
   const holydayLILink = document.createElement('a');
-  holydayLILink.href = '#';
   holydayLILink.className = "pure-menu-link";
   holydayLILink.innerText = newHolyday.name;
 
