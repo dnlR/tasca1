@@ -1,6 +1,6 @@
-import { IsHolyday } from "../interfaces/isholyday.js";
+import { Isholiday } from "../interfaces/isholiday.js";
 
-export class Holyday implements IsHolyday {
+export class holiday implements Isholiday {
   constructor(
     readonly name:string,
     readonly price: number,

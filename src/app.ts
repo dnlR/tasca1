@@ -1,9 +1,9 @@
-import { Holyday } from "./classes/holyday.js";
-import { IsHolyday } from "./interfaces/isholyday.js";
+import { holiday } from "./classes/holiday.js";
+import { Isholiday } from "./interfaces/isholiday.js";
 
-let holydays: [IsHolyday];
+let holidays: [Isholiday];
 
-const form = document.querySelector("#holyday_new") as HTMLFormElement;
+const form = document.querySelector("#holiday_new") as HTMLFormElement;
 form.addEventListener('submit', (e: Event) => {
   e.preventDefault();
 
@@ -14,40 +14,40 @@ form.addEventListener('submit', (e: Event) => {
 
   let values: [string, number, string, string] = [name.value, price.valueAsNumber, country.value, description.value];
 
-  const newHolyday = new Holyday(...values);
-  if (Array.isArray(holydays) && holydays.length) {
-    holydays.push(newHolyday);
+  const newholiday = new holiday(...values);
+  if (Array.isArray(holidays) && holidays.length) {
+    holidays.push(newholiday);
   } else {
-    holydays = [newHolyday];
+    holidays = [newholiday];
   }
 
-  const holydayULList = document.querySelector("#holydays_list") as HTMLUListElement;
-  const holydayLI = document.createElement('li');
-  holydayLI.className = 'pure-menu-item';
-  const holydayLILink = document.createElement('a');
-  holydayLILink.className = "pure-menu-link";
-  holydayLILink.innerText = newHolyday.name;
+  const holidayULList = document.querySelector("#holidays_list") as HTMLUListElement;
+  const holidayLI = document.createElement('li');
+  holidayLI.className = 'pure-menu-item';
+  const holidayLILink = document.createElement('a');
+  holidayLILink.className = "pure-menu-link";
+  holidayLILink.innerText = newholiday.name;
 
-  holydayLILink.addEventListener('click', (e: Event) => {
-    const holydayDetail = document.querySelector('#holyday_detail') as HTMLUListElement;
+  holidayLILink.addEventListener('click', (e: Event) => {
+    const holidayDetail = document.querySelector('#holiday_detail') as HTMLUListElement;
 
-    // empty previous holyday detail before updating with the new one clicked
-    holydayDetail.innerHTML = '';
+    // empty previous holiday detail before updating with the new one clicked
+    holidayDetail.innerHTML = '';
 
-    const holydayName = document.createElement('li');
-    holydayName.innerText = `Name: ${newHolyday.name}`;
-    const holydayPrice = document.createElement('li');
-    holydayPrice.innerText = `Price: ${newHolyday.price.toString()}`;
-    const holydayCountry = document.createElement('li');
-    holydayCountry.innerText = `Country: ${newHolyday.country}`;
-    const holydayDescription = document.createElement('li');
-    holydayDescription.innerText = `Description: ${newHolyday.description}`;
+    const holidayName = document.createElement('li');
+    holidayName.innerText = `Name: ${newholiday.name}`;
+    const holidayPrice = document.createElement('li');
+    holidayPrice.innerText = `Price: ${newholiday.price.toString()}`;
+    const holidayCountry = document.createElement('li');
+    holidayCountry.innerText = `Country: ${newholiday.country}`;
+    const holidayDescription = document.createElement('li');
+    holidayDescription.innerText = `Description: ${newholiday.description}`;
 
-    holydayDetail.append(holydayName, holydayPrice, holydayCountry, holydayDescription);
+    holidayDetail.append(holidayName, holidayPrice, holidayCountry, holidayDescription);
   });
 
-  holydayLI.append(holydayLILink);
-  holydayULList.append(holydayLI);
+  holidayLI.append(holidayLILink);
+  holidayULList.append(holidayLI);
 
   form.reset();
 });
