@@ -12,13 +12,11 @@ form.addEventListener('submit', (e: Event) => {
   const country = document.querySelector("#country") as HTMLInputElement;
   const description = document.querySelector("#description") as HTMLInputElement;
 
-  let values: [string, number, string, string] = [name.value, price.valueAsNumber, country.value, description.value];
-
-  const newholiday = new holiday(...values);
+  const newHoliday = new holiday(name.value, price.valueAsNumber, country.value, description.value);
   if (Array.isArray(holidays) && holidays.length) {
-    holidays.push(newholiday);
+    holidays.push(newHoliday);
   } else {
-    holidays = [newholiday];
+    holidays = [newHoliday];
   }
 
   const holidayULList = document.querySelector("#holidays_list") as HTMLUListElement;
@@ -26,7 +24,7 @@ form.addEventListener('submit', (e: Event) => {
   holidayLI.className = 'pure-menu-item';
   const holidayLILink = document.createElement('a');
   holidayLILink.className = "pure-menu-link";
-  holidayLILink.innerText = newholiday.name;
+  holidayLILink.innerText = newHoliday.name;
 
   holidayLILink.addEventListener('click', (e: Event) => {
     const holidayDetail = document.querySelector('#holiday_detail') as HTMLUListElement;
@@ -35,13 +33,13 @@ form.addEventListener('submit', (e: Event) => {
     holidayDetail.innerHTML = '';
 
     const holidayName = document.createElement('li');
-    holidayName.innerText = `Name: ${newholiday.name}`;
+    holidayName.innerText = `Name: ${newHoliday.name}`;
     const holidayPrice = document.createElement('li');
-    holidayPrice.innerText = `Price: ${newholiday.price.toString()}`;
+    holidayPrice.innerText = `Price: ${newHoliday.price.toString()}`;
     const holidayCountry = document.createElement('li');
-    holidayCountry.innerText = `Country: ${newholiday.country}`;
+    holidayCountry.innerText = `Country: ${newHoliday.country}`;
     const holidayDescription = document.createElement('li');
-    holidayDescription.innerText = `Description: ${newholiday.description}`;
+    holidayDescription.innerText = `Description: ${newHoliday.description}`;
 
     holidayDetail.append(holidayName, holidayPrice, holidayCountry, holidayDescription);
   });
